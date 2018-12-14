@@ -1,0 +1,49 @@
+<script type="text/discourse-plugin" version="0.8">
+
+// hack till we get translations
+I18n.translations[I18n.locale].js.user.mobile_switch_title = "Switch header to topic title on scroll";
+
+function getMobileSwitchTitle() {
+  let pref = localStorage.getItem("mobileSwitchTitle");
+  let result = settings.default_enable_mobile_header_collapse;
+  if (pref !== null) {
+    result = pref === "true";
+  }
+  return result;
+}
+
+api.modifyClass("component:site-header", {
+
+  didInsertElement: function() {
+    this._super();
+
+    if (!getMobileSwitchTitle()) {
+      this.appEvents.off("header:show-topic");
+      this.appEvents.off("header:hide-topic");
+      $('html').addClass("disable-mobile-header-switch");
+    }
+  }
+
+});
+
+// technically we only want to amend current user here
+api.modifyClass("model:user", {
+  mobileSwitchTitle: function() {
+    return getMobileSwitchTitle();
+  }.property()
+});
+
+api.modifyClass("controller:preferences/interface", {
+  actions: {
+    save() {
+      this._super();
+      localStorage.setItem("mobileSwitchTitle", this.get("model.mobileSwitchTitle").toString());
+    }
+  }
+});
+
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/user-preferences-interface/add-selector'>
+  {{preference-checkbox labelKey="user.mobile_switch_title" checked=model.mobileSwitchTitle}}
+</script>

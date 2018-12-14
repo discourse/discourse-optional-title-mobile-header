@@ -1,0 +1,4 @@
+default_enable_mobile_header_collapse:
+  default: true
+  description:
+    en: Enable switching header to topic title on mobile

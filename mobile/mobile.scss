@@ -1,0 +1,11 @@
+html.disable-mobile-header-switch .d-header {
+
+  .panel {
+    -webkit-animation: none;
+    animation: none;
+  }
+
+  &.scroll-down .panel {
+    display: inherit;
+  }
+}
