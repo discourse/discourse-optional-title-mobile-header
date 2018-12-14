@@ -1,6 +1,6 @@
 {
-  "name": "Optional Mobile Header Collapsing",
-  "about_url": "URL",
+  "name": "Optional Mobile Header Title Switch",
+  "about_url": "https://meta.discourse.org/t/optional-mobile-title-switch-component/104238",
   "license_url": "https://github.com/discourse/discourse-optional-title-mobile-header/blob/master/LICENSE.txt",
   "component": true
 }

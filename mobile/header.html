@@ -5,7 +5,7 @@ I18n.translations[I18n.locale].js.user.mobile_switch_title = "Switch header to t
 
 function getMobileSwitchTitle() {
   let pref = localStorage.getItem("mobileSwitchTitle");
-  let result = settings.default_enable_mobile_header_collapse;
+  let result = settings.default_enabled;
   if (pref !== null) {
     result = pref === "true";
   }
