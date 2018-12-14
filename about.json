@@ -1,6 +1,6 @@
 {
   "name": "Optional Mobile Header Collapsing",
   "about_url": "URL",
-  "license_url": "URL",
+  "license_url": "https://github.com/discourse/discourse-optional-title-mobile-header/blob/master/LICENSE.txt",
   "component": true
 }
