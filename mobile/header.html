@@ -37,7 +37,7 @@ api.modifyClass("controller:preferences/interface", {
   actions: {
     save() {
       this._super();
-      if(getMobileSwitchTitle != this.get("model.mobileSwitchTitle")){
+      if(getMobileSwitchTitle() != this.get("model.mobileSwitchTitle")){
         Discourse.set("assetVersion", "forceRefresh");
       }
       localStorage.setItem("mobileSwitchTitle", this.get("model.mobileSwitchTitle").toString());
