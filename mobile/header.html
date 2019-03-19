@@ -8,8 +8,6 @@ function getMobileSwitchTitle() {
   return result;
 }
 
-api.modifyClass("component:discourse-topic", {});
-
 if (!getMobileSwitchTitle()) {
   const discourseTopic = require("discourse/components/discourse-topic")
     .default;
@@ -45,5 +43,5 @@ api.modifyClass("controller:preferences/interface", {
 </script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/user-preferences-interface/add-selector'>
-  {{preference-checkbox labelKey=themePrefix("mobile_switch_title") checked=model.mobileSwitchTitle}}
+  {{preference-checkbox labelKey=(theme-prefix 'mobile_switch_title') checked=model.mobileSwitchTitle}} 
 </script>
