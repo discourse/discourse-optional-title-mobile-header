@@ -13,9 +13,10 @@ if (!getMobileSwitchTitle()) {
     .default;
 
   discourseTopic.reopen({
-    scrolled() {
-      return;
-    }
+    shouldShowTopicInHeader(topic, offset) {
+      // Disable showing topic title and metadata in header
+      return false;
+    },
   });
 }
 
@@ -43,5 +44,5 @@ api.modifyClass("controller:preferences/interface", {
 </script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/user-preferences-interface/add-selector'>
-  {{preference-checkbox labelKey=(theme-prefix 'mobile_switch_title') checked=model.mobileSwitchTitle}} 
+  {{preference-checkbox labelKey=(theme-prefix 'mobile_switch_title') checked=model.mobileSwitchTitle}}
 </script>
