@@ -20,12 +20,7 @@ if (!getMobileSwitchTitle()) {
   });
 }
 
-// technically we only want to amend current user here
-api.modifyClass("model:user", {
-  mobileSwitchTitle: function() {
-    return getMobileSwitchTitle();
-  }.property()
-});
+api.getCurrentUser().mobileSwitchTitle = getMobileSwitchTitle();
 
 api.modifyClass("controller:preferences/interface", {
   actions: {
@@ -39,7 +34,8 @@ api.modifyClass("controller:preferences/interface", {
         this.get("model.mobileSwitchTitle").toString()
       );
     }
-  }
+  },
+  pluginId: "optional-title-mobile-header"
 });
 </script>
 
