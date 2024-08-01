@@ -1,4 +1,5 @@
 import { action } from "@ember/object";
+import PreferenceCheckbox from "discourse/components/preference-checkbox";
 import { apiInitializer } from "discourse/lib/api";
 
 function getMobileSwitchTitle() {
@@ -46,4 +47,11 @@ export default apiInitializer("0.8", (api) => {
         }
       }
   );
+
+  api.renderInOutlet("user-preferences-interface", <template>
+    <PreferenceCheckbox
+      @labelKey={{themePrefix "mobile_switch_title"}}
+      @checked={{@outletArgs.model.mobileSwitchTitle}}
+    />
+  </template>);
 });
