@@ -48,10 +48,13 @@ export default apiInitializer("0.8", (api) => {
       }
   );
 
-  api.renderInOutlet("user-preferences-interface", <template>
-    <PreferenceCheckbox
-      @labelKey={{themePrefix "mobile_switch_title"}}
-      @checked={{@outletArgs.model.mobileSwitchTitle}}
-    />
-  </template>);
+  api.renderInOutlet(
+    "user-preferences-interface",
+    <template>
+      <PreferenceCheckbox
+        @labelKey={{themePrefix "mobile_switch_title"}}
+        @checked={{@outletArgs.model.mobileSwitchTitle}}
+      />
+    </template>
+  );
 });
