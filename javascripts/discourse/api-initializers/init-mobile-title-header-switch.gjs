@@ -11,7 +11,7 @@ function getMobileSwitchTitle() {
   return result;
 }
 
-export default apiInitializer("0.8", (api) => {
+export default apiInitializer((api) => {
   if (!api.container.lookup("service:site").mobileView) {
     return;
   }
