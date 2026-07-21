@@ -12,23 +12,23 @@ function getMobileSwitchTitle() {
 }
 
 export default apiInitializer((api) => {
-  if (!api.container.lookup("service:site").mobileView) {
-    return;
-  }
-
-  if (!getMobileSwitchTitle()) {
-    api.modifyClass(
-      "service:header",
-      (Superclass) =>
-        class extends Superclass {
-          get topicInfoVisible() {
+  api.modifyClass(
+    "service:header",
+    (Superclass) =>
+      class extends Superclass {
+        get topicInfoVisible() {
+          if (this.site.mobileView && !getMobileSwitchTitle()) {
             return false;
           }
+          return super.topicInfoVisible;
         }
-    );
-  }
+      }
+  );
 
-  api.getCurrentUser().mobileSwitchTitle = getMobileSwitchTitle();
+  const currentUser = api.getCurrentUser();
+  if (currentUser) {
+    currentUser.mobileSwitchTitle = getMobileSwitchTitle();
+  }
 
   api.modifyClass(
     "controller:preferences/interface",
